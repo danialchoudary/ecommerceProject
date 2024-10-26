@@ -8,7 +8,7 @@ function Nav1() {
     <>
     <div className="h-11  text-gray-600 flex justify-around items-center  px-4 ">
   <div className=' font-mono font-extrabold'>
-    Welcome to worldwide Megamart!
+    Welcome to worldwide Mega!
   </div>
 
   <div className='flex gap-4 justify-around'>
