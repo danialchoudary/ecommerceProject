@@ -7,9 +7,10 @@ function Nav1() {
   return (
     <>
     <div className="h-11  text-gray-600 flex justify-around items-center  px-4 ">
-  <div className=' font-mono font-extrabold'>
-    Welcome to worldwide Mega!
-  </div>
+    <div className="font-mono  text-center text-sm sm:text-base md:text-lg lg:text-xl p-4">
+  Welcome to worldwide Megamart!
+</div>
+
 
   <div className='flex gap-4 justify-around'>
     {/* Icons for Small Screens */}

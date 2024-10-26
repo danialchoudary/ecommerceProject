@@ -34,7 +34,8 @@ const Ad = () => {
   const currentAd = adData[currentAdIndex];
 
   return (
-    <div className="bg-gray-900 text-white p-2 rounded-lg w-9/12 mx-auto my-auto mt-56  md:mt-20 relative top-32"> {/* Reduce padding and width, and margin top to 10px */}
+    <div className="bg-gray-900 text-white p-2 rounded-lg w-9/12 mx-auto my-auto mt-56 md:mt-20 relative top-32 sm:top-20"
+> {/* Reduce padding and width, and margin top to 10px */}
     <div className="flex justify-between items-center h-full">
   <button onClick={handlePreviousAd} className="text-xl "> 
     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

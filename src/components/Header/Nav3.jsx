@@ -2,115 +2,72 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCategory,setSearchTerm } from '../store/productsReducer';
-
+import { selectCategory, setSearchTerm } from '../store/productsReducer';
 
 const Nav3 = () => {
   const dispatch = useDispatch();
   const selectedCategory = useSelector((state) => state.products.selectedCategory);
 
-  const [isOpen, setIsOpen] = useState({
-    
-  });
+  const [isOpen, setIsOpen] = useState({});
 
   const handleToggle = (category) => {
-    setIsOpen((prevOpen) => {
-      return { [category]: !prevOpen[category] };
-    });
+    setIsOpen((prevOpen) => ({
+      [category]: !prevOpen[category],
+    }));
     dispatch(selectCategory(category)); // Select category
     dispatch(setSearchTerm('')); // Clear search term
     console.log("Selected category:", category); // Debugging log
   };
-  
-  
 
   const categories = [
-    {
-      name: 'Groceries',
-      items: [
-        
-      ],
-    },
-    {
-      name: 'Womens-bags',
-      items: [
-       
-      ],
-    },
-    {
-      name: 'Kitchen-accessories',
-      items: [
-        
-      ],
-    },
-    {
-      name: 'Fragrances',
-      items: [
-       
-      ],
-    },
-    {
-      name: 'Laptops',
-      items: [
-       
-      ],
-    },
-    {
-      name: 'Beauty',
-      items: [
-       
-      ],
-    },
-    {
-      name: 'Vehicle',
-      items: [
-       
-      ],
-    },
-    {
-      name: 'Sports-accessories',
-      items: [
-       
-      ],
-    },
+    { name: 'Groceries', items: [] },
+    { name: 'Womens-bags', items: [] },
+    { name: 'Kitchen-accessories', items: [] },
+    { name: 'Fragrances', items: [] },
+    { name: 'Laptops', items: [] },
+    { name: 'Beauty', items: [] },
+    { name: 'Vehicle', items: [] },
+    { name: 'Sports-accessories', items: [] },
   ];
+
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (!event.target.closest('.category-list')) { 
-               setIsOpen((prevOpen) => Object.keys(prevOpen).reduce((acc, key) => ({...acc, [key]: false }), {}));
-    }
-  };
+      if (!event.target.closest('.category-list')) {
+        setIsOpen((prevOpen) => Object.keys(prevOpen).reduce((acc, key) => ({ ...acc, [key]: false }), {}));
+      }
+    };
 
-  document.addEventListener('click', handleClickOutside);
+    document.addEventListener('click', handleClickOutside);
 
-  return () => {
-    document.removeEventListener('click', handleClickOutside);
-  };
-}, [setIsOpen]);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [setIsOpen]);
 
-return (
-  <div className="h-69px w-full flex justify-center items-center ">
-    <div className="h-36px w-11/12 flex justify-evenly flex-wrap gap-y-2 gap-x-1 lg:gap-x-0">
-      {categories.map((category, index) => (
-        <div
-          key={index}
-          className="flex gap-2 rounded-full p-3 sm:p-4 bg-sky-100 justify-center items-center hover:bg-blue-400 cursor-pointer hover:text-white active:bg-blue-400 active:text-white category-list text-xs sm:text-base"
-          onClick={() => handleToggle(category.name.replace(/\s+/g, '').toLowerCase())}
-        >
-          <div>{category.name}</div>
-          <div className="relative">
+  return (
+    <div className="h-69px w-full flex justify-center items-center">
+      <div className="h-36px w-11/12 flex overflow-x-auto scrollbar-hidden gap-y-2 lg:gap-x-0">
+        <div className="flex gap-2">
+          {categories.map((category, index) => (
             <div
-              className={`cursor-pointer hover:text-white ${isOpen[category.name.replace(/\s+/g, '').toLowerCase()]? 'text-white' : ''}`}
+              key={index}
+              className="flex gap-2 rounded-full p-3 sm:p-4 bg-sky-100 justify-center items-center hover:bg-blue-400 cursor-pointer hover:text-white active:bg-blue-400 active:text-white category-list text-xs sm:text-base whitespace-nowrap"
+              onClick={() => handleToggle(category.name.replace(/\s+/g, '').toLowerCase())}
             >
-             
+              <div>{category.name}</div>
+              <div className="relative">
+                <div
+                  className={`cursor-pointer hover:text-white ${isOpen[category.name.replace(/\s+/g, '').toLowerCase()] ? 'text-white' : ''}`}
+                >
+                  <FontAwesomeIcon icon={faChevronDown} />
+                </div>
+              </div>
             </div>
-            
-          </div>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
-  </div>
-);
+  );
 }
 
 export default Nav3;
