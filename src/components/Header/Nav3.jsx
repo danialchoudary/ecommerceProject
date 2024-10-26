@@ -6,7 +6,7 @@ import { selectCategory, setSearchTerm } from '../store/productsReducer';
 
 const Nav3 = () => {
   const dispatch = useDispatch();
-  const selectedCategory = useSelector((state) => state.products.selectedCategory);
+  const selectedCategory = useSelector((state) => state.products.selectedCategory); // Get the selected category from the state
 
   const [isOpen, setIsOpen] = useState({});
 
@@ -42,7 +42,7 @@ const Nav3 = () => {
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
-  }, [setIsOpen]);
+  }, []);
 
   return (
     <div className="h-69px w-full flex justify-center items-center">
@@ -51,7 +51,9 @@ const Nav3 = () => {
           {categories.map((category, index) => (
             <div
               key={index}
-              className="flex gap-2 rounded-full p-3 sm:p-4 bg-sky-100 justify-center items-center hover:bg-blue-400 cursor-pointer hover:text-white active:bg-blue-400 active:text-white category-list text-xs sm:text-base whitespace-nowrap"
+              className={`flex gap-2 rounded-full p-3 sm:p-4 justify-center items-center cursor-pointer category-list text-xs sm:text-base whitespace-nowrap 
+              ${selectedCategory === category.name ? 'bg-blue-500 text-white' : 'bg-sky-100 hover:bg-blue-400'} 
+              active:bg-blue-800`}
               onClick={() => handleToggle(category.name.replace(/\s+/g, '').toLowerCase())}
             >
               <div>{category.name}</div>

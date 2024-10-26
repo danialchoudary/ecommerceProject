@@ -25,8 +25,8 @@ const ProductCard = ({ product, onAddToCart, onRemoveFromCart, onFavourite, onSa
   };
 
   return (
-    <div className="relative max-w-xs rounded overflow-hidden shadow-lg p-2 bg-white flex flex-col">
-      <div className="absolute top-2 right-2">
+    <div className="relative max-w-xs rounded overflow-hidden shadow-lg  bg-white flex flex-col">
+      <div className="absolute top-3 right-2">
         <FontAwesomeIcon 
           icon={faBookmark} 
           className={`text-2xl cursor-pointer ${isSaved ? 'text-blue-500' : 'text-gray-400'}`} 

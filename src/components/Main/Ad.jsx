@@ -34,7 +34,7 @@ const Ad = () => {
   const currentAd = adData[currentAdIndex];
 
   return (
-    <div className="bg-gray-900 text-white p-2 rounded-lg w-9/12 mx-auto my-auto mt-56 md:mt-20 relative top-32 sm:top-20"
+    <div className="bg-gray-900 text-white p-2 rounded-lg w-9/12 mx-auto my-auto mt-10 md:mt-20 relative top-32 sm:top-26"
 > {/* Reduce padding and width, and margin top to 10px */}
     <div className="flex justify-between items-center h-full">
   <button onClick={handlePreviousAd} className="text-xl "> 
