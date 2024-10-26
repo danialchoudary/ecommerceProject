@@ -80,7 +80,13 @@ const Products = () => {
       <h1 className="text-4xl mb-4 text-center font-bold font-serif underline">Grab Your Products</h1>
       <div className=""> 
         {loading ? (
-          <p>Loading...</p>
+          <div className="flex items-center justify-center h-screen">
+          <div className="flex space-x-2">
+            <div className="w-6 h-6 bg-blue-500 rounded-full animate-bounce"></div>
+            <div className="w-6 h-6 bg-blue-500 rounded-full animate-bounce200"></div>
+            <div className="w-6 h-6 bg-blue-500 rounded-full animate-bounce400"></div>
+          </div>
+        </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {filteredProducts.map((product) => (

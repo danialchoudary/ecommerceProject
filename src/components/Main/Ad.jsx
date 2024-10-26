@@ -28,13 +28,19 @@ const Ad = () => {
   };
 
   if (!adData) {
-    return <div>Loading...</div>;
+    return    <div className="flex items-center justify-center h-screen">
+    <div className="flex space-x-2">
+      <div className="w-6 h-6 bg-blue-500 rounded-full animate-bounce"></div>
+      <div className="w-6 h-6 bg-blue-500 rounded-full animate-bounce200"></div>
+      <div className="w-6 h-6 bg-blue-500 rounded-full animate-bounce400"></div>
+    </div>
+  </div>
   }
 
   const currentAd = adData[currentAdIndex];
 
   return (
-    <div className="bg-gray-900 text-white p-2 rounded-lg w-9/12 mx-auto my-auto mt-10 md:mt-20 relative top-32 sm:top-26"
+    <div className="bg-gray-900 text-white p-2 rounded-lg w-9/12 mx-auto mt-44  sm:mt-56"
 > {/* Reduce padding and width, and margin top to 10px */}
     <div className="flex justify-between items-center h-full">
   <button onClick={handlePreviousAd} className="text-xl "> 
